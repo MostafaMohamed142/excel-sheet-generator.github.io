@@ -15,12 +15,14 @@ const generateTable = () => {
     }
     if(rowsNumber>0 && columnsNumber>0){
         tableExists = true
+    }else{
+        Swal.fire('You should enter a number of rows and columns')
     }
 }
 
 const ExportToExcel = (type, fn, dl) => {
     if(!tableExists){
-        return
+        Swal.fire('No tables to export')
     }
     var elt = table
     var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" })
